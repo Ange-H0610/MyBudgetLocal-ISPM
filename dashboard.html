@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - MyBudgetLocal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>📊 Mon Budget Local</h1>
+    <a href="index.html" class="logout">Déconnexion</a>
+  </header>
+
+  <main>
+    <section>
+      <h2>Revenus</h2>
+      <table>
+        <tr><td>Salaire</td><td><input type="number" class="revenu" value="0"></td></tr>
+        <tr><td>Allocations</td><td><input type="number" class="revenu" value="0"></td></tr>
+        <tr><td>Autres</td><td><input type="number" class="revenu" value="0"></td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Dépenses</h2>
+      <table>
+        <tr><td>Loyer</td><td><input type="number" class="depense" value="0"></td></tr>
+        <tr><td>Électricité</td><td><input type="number" class="depense" value="0"></td></tr>
+        <tr><td>Internet</td><td><input type="number" class="depense" value="0"></td></tr>
+        <tr><td>Nourriture</td><td><input type="number" class="depense" value="0"></td></tr>
+        <tr><td>Autres</td><td><input type="number" class="depense" value="0"></td></tr>
+      </table>
+    </section>
+
+    <button id="calcBtn">Calculer</button>
+
+    <section>
+      <h2>Résultat</h2>
+      <p>Total Revenus : <span id="totalRevenus">0</span> Ar</p>
+      <p>Total Dépenses : <span id="totalDepenses">0</span> Ar</p>
+      <p><strong>Solde : <span id="solde">0</span> Ar</strong></p>
+    </section>
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
