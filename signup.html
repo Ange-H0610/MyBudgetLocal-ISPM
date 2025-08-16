@@ -3,19 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signup - MyBudgetLocal</title>
+  <title>MyBudgetLocal - Inscription</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="container">
-    <h2>Créer un compte</h2>
+<body class="auth-body">
+
+  <div class="auth-container">
+    <h2 class="auth-title">Inscription</h2>
     <form id="signupForm">
-      <input type="text" id="signupUser" placeholder="Nom d'utilisateur" required>
+      <input type="text" id="signupName" placeholder="Nom complet" required>
+      <input type="email" id="signupEmail" placeholder="Email" required>
       <input type="password" id="signupPass" placeholder="Mot de passe" required>
-      <button type="submit">S'inscrire</button>
+      <button type="submit" class="btn">Créer un compte</button>
     </form>
-    <p>Déjà un compte ? <a href="index.html">Se connecter</a></p>
+    <p class="switch-auth">
+      Déjà inscrit ? <a href="index.html">Se connecter</a>
+    </p>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
