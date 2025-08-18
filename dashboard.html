@@ -2,52 +2,28 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - MyBudgetLocal</title>
+  <title>Dashboard</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="dashboard.js"></script>
 </head>
-<body class="dashboard-body gradient-theme">
-
-  <!-- NAVBAR -->
+<body class="theme-light">
   <nav class="navbar">
-    <div class="nav-buttons"></div>
-    <div class="nav-buttons">
-      <select id="themeSwitcher">
-        <option value="gradient-theme">Dégradé</option>
-        <option value="light-theme">Blanc</option>
-        <option value="dark-theme">Dark</option>
+    <h2>Mon Dashboard</h2>
+    <div class="nav-right">
+      <select id="themeSelector">
+        <option value="theme-light">Clair</option>
+        <option value="theme-dark">Sombre</option>
+        <option value="theme-green">Vert</option>
+        <option value="theme-brown">Marron</option>
       </select>
-      <button id="logoutBtn" class="btn">Déconnexion</button>
+      <span id="userGreeting"></span>
+      <button id="logoutBtn">Se déconnecter</button>
     </div>
   </nav>
 
-  <!-- DASHBOARD CONTENT -->
-  <div class="dashboard-container">
-    <h2>Calculateur de budget</h2>
-
-    <!-- REVENUS -->
-    <h3>Revenus</h3>
-    <table class="budget-table">
-      <tr><td>Salaire et autres revenus</td><td><input type="number" value="0" class="budget-input"></td></tr>
-      <tr><td>Pensions / Allocations</td><td><input type="number" value="0" class="budget-input"></td></tr>
-      <tr><td>Loyers / Revenus du capital</td><td><input type="number" value="0" class="budget-input"></td></tr>
-      <tr><td>Autres revenus</td><td><input type="number" value="0" class="budget-input"></td></tr>
-    </table>
-
-    <!-- DEPENSES -->
-    <h3>Dépenses</h3>
-    <table class="budget-table">
-      <tr><td>Loyer et charges</td><td><input type="number" value="0" class="budget-input"></td></tr>
-      <tr><td>Alimentation</td><td><input type="number" value="0" class="budget-input"></td></tr>
-      <tr><td>Transports</td><td><input type="number" value="0" class="budget-input"></td></tr>
-      <tr><td>Loisirs / Culture</td><td><input type="number" value="0" class="budget-input"></td></tr>
-      <tr><td>Autres dépenses</td><td><input type="number" value="0" class="budget-input"></td></tr>
-    </table>
-
-    <button id="calcBtn" class="btn">Calculer Total</button>
-    <p>Total: <span id="totalAmount">0</span> MGA</p>
-  </div>
-
-  <script src="app.js"></script>
+  <main class="container">
+    <h1>Bienvenue sur ton espace</h1>
+    <p>Ici tu peux gérer tes infos personnelles.</p>
+  </main>
 </body>
 </html>

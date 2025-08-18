@@ -1,14 +1,22 @@
-document.getElementById("calcBtn").addEventListener("click", () => {
-  const revenus = document.querySelectorAll(".revenu");
-  const depenses = document.querySelectorAll(".depense");
+document.addEventListener("DOMContentLoaded", () => {
+  const userGreeting = document.getElementById("userGreeting");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const themeSelector = document.getElementById("themeSelector");
 
-  let totalRevenus = 0;
-  let totalDepenses = 0;
+  const user = JSON.parse(sessionStorage.getItem("loggedInUser"));
+  if (!user) {
+    window.location.href = "index.html";
+    return;
+  }
 
-  revenus.forEach(r => totalRevenus += parseFloat(r.value) || 0);
-  depenses.forEach(d => totalDepenses += parseFloat(d.value) || 0);
+  userGreeting.textContent = `Bonjour, ${user.nom}`;
 
-  document.getElementById("totalRevenus").textContent = totalRevenus;
-  document.getElementById("totalDepenses").textContent = totalDepenses;
-  document.getElementById("solde").textContent = totalRevenus - totalDepenses;
+  logoutBtn.addEventListener("click", () => {
+    sessionStorage.removeItem("loggedInUser");
+    window.location.href = "index.html";
+  });
+
+  themeSelector.addEventListener("change", (e) => {
+    document.body.className = e.target.value;
+  });
 });
