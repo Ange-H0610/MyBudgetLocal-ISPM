@@ -2,30 +2,25 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Inscription</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyBudgetLocal - Inscription</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="app.js"></script>
 </head>
-<body class="theme-light">
-  <div class="container">
-    <h1>Inscription</h1>
+<body class="auth-body">
+
+  <div class="auth-container">
+    <h2 class="auth-title">Inscription</h2>
     <form id="signupForm">
-      <label for="nom">Nom</label>
-      <input type="text" id="nom" required>
-
-      <label for="password">Mot de passe</label>
-      <input type="password" id="password" required>
-
-      <label for="sexe">Sexe</label>
-      <select id="sexe" required>
-        <option value="">-- Choisir --</option>
-        <option value="Homme">Homme</option>
-        <option value="Femme">Femme</option>
-      </select>
-
-      <button type="submit">S’inscrire</button>
+      <input type="text" id="signupName" placeholder="Nom complet" required>
+      <input type="email" id="signupEmail" placeholder="Email" required>
+      <input type="password" id="signupPass" placeholder="Mot de passe" required>
+      <button type="submit" class="btn">Créer un compte</button>
     </form>
-    <p>Déjà un compte ? <a href="index.html">Connexion</a></p>
+    <p class="switch-auth">
+      Déjà inscrit ? <a href="index.html">Se connecter</a>
+    </p>
   </div>
+
+  <script src="app.js"></script>
 </body>
 </html>

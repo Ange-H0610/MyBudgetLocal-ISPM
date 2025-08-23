@@ -2,23 +2,25 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Connexion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyBudgetLocal - Connexion</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="app.js"></script>
 </head>
-<body class="theme-light">
-  <div class="container">
-    <h1>Connexion</h1>
-    <form id="loginForm">
-      <label for="nom">Nom</label>
-      <input type="text" id="nom" required>
-      
-      <label for="password">Mot de passe</label>
-      <input type="password" id="password" required>
+<body class="auth-body">
 
-      <button type="submit">Se connecter</button>
+  <div class="auth-container">
+    <h2 class="auth-title">Connexion</h2>
+    <form id="loginForm">
+      <input type="text" id="loginName" placeholder="Nom complet" required>
+      <input type="password" id="loginPass" placeholder="Mot de passe" required>
+      <button type="submit" class="btn">Se connecter</button>
     </form>
-    <p>Pas encore de compte ? <a href="signup.html">Inscription</a></p>
+
+    <p class="switch-auth">
+      Pas encore de compte ? <a href="signup.html">Inscrivez-vous</a>
+    </p>
   </div>
+
+  <script src="app.js"></script>
 </body>
 </html>

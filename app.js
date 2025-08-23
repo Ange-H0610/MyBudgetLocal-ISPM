@@ -1,37 +1,84 @@
-// Sauvegarde inscription
-document.addEventListener("DOMContentLoaded", () => {
-  const signupForm = document.getElementById("signupForm");
-  if (signupForm) {
-    signupForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const nom = document.getElementById("nom").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const sexe = document.getElementById("sexe").value;
+// ----- SIGNUP -----
+const signupForm = document.getElementById("signupForm");
+if (signupForm) {
+  signupForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("signupName").value;
+    const email = document.getElementById("signupEmail").value;
+    const password = document.getElementById("signupPass").value;
 
-      if (nom && password && sexe) {
-        const user = { nom, password, sexe };
-        localStorage.setItem("user", JSON.stringify(user));
-        alert("Inscription réussie !");
-        window.location.href = "index.html";
-      }
-    });
+    const user = { name, email, password };
+    localStorage.setItem("user", JSON.stringify(user));
+
+    alert("Inscription réussie ! Vous pouvez vous connecter.");
+    window.location.href = "index.html";
+  });
+}
+
+
+// ----- LOGIN -----
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("loginName").value;
+    const password = document.getElementById("loginPass").value;
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user && user.name === name && user.password === password) {
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("userName", user.name);
+      window.location.href = "dashboard.html";
+    } else {
+      alert("Nom ou mot de passe incorrect !");
+    }
+  });
+}
+
+// ----- CHECK LOGIN & DASHBOARD -----
+
+
+if (window.location.pathname.includes("dashboard.html")) {
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  if (!isLoggedIn) {
+    window.location.href = "index.html";
   }
 
-  // Vérif connexion
-  const loginForm = document.getElementById("loginForm");
-  if (loginForm) {
-    loginForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const nom = document.getElementById("nom").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const user = JSON.parse(localStorage.getItem("user"));
+  const userName = localStorage.getItem("userName");
+  document.getElementById("userGreeting").textContent = `Bonjour, ${userName}`;
 
-      if (user && user.nom === nom && user.password === password) {
-        sessionStorage.setItem("loggedInUser", JSON.stringify(user));
-        window.location.href = "dashboard.html";
-      } else {
-        alert("Nom ou mot de passe incorrect !");
-      }
+  // CALCUL REVENUS - DEPENSES
+  document.getElementById("calcBtn").addEventListener("click", function () {
+    let totalRevenus = 0;
+    let totalDepenses = 0;
+
+    document.querySelectorAll(".revenu").forEach((input) => {
+      totalRevenus += Number(input.value);
     });
-  }
-});
+
+    document.querySelectorAll(".depense").forEach((input) => {
+      totalDepenses += Number(input.value);
+    });
+
+    const solde = totalRevenus - totalDepenses;
+
+    document.getElementById("totalRevenus").innerText = totalRevenus;
+    document.getElementById("totalDepenses").innerText = totalDepenses;
+    document.getElementById("soldeFinal").innerText = solde;
+  });
+
+  // LOGOUT
+  document.getElementById("logoutBtn").addEventListener("click", function () {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userName");
+    window.location.href = "index.html";
+  });
+
+  // THEME SWITCHER
+  const themeSwitcher = document.getElementById("themeSwitcher");
+  themeSwitcher.addEventListener("change", function () {
+    document.body.className = "";
+    document.body.classList.add(this.value);
+  });
+}
